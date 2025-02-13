@@ -1,0 +1,19 @@
+<!-- backend/templates/confirmationEmail.mjml -->
+
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="20px" font-weight="bold">
+          Bienvenue sur notre application !
+        </mj-text>
+        <mj-text>
+          Merci de vous être inscrit. Veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous.
+        </mj-text>
+        <mj-button href="{{confirmationLink}}" background-color="#346DF1" color="#ffffff">
+          Confirmer mon e-mail
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
