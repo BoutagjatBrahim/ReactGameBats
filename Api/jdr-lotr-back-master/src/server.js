@@ -28,10 +28,17 @@ const app = fastify({
 	logger: false,
 });
 
-// Créer l'instance Socket.IO
+// // Créer l'instance Socket.IO
+// const io = new Server(httpServer, {
+// 	cors: {
+// 		origin: "http://localhost:5173",
+// 		methods: ["GET", "POST"],
+// 		credentials: true
+// 	}
+// });
 const io = new Server(httpServer, {
 	cors: {
-		origin: "http://localhost:5173",
+		origin: process.env.CORS_ORIGIN,
 		methods: ["GET", "POST"],
 		credentials: true
 	}
@@ -587,8 +594,14 @@ await app
 	.register(fastifyBcrypt, {
 		saltWorkFactor: 12,
 	})
+	// .register(cors, {
+	// 	origin: "http://localhost:5173",
+	// 	credentials: true,
+	// 	methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+	// 	allowedHeaders: ['Content-Type', 'Authorization']
+	// })
 	.register(cors, {
-		origin: "http://localhost:5173",
+		origin: process.env.CORS_ORIGIN,
 		credentials: true,
 		methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
 		allowedHeaders: ['Content-Type', 'Authorization']
@@ -623,8 +636,12 @@ const start = async () => {
 		await sequelize.sync({ alter: true, logging: console.log });
 		//console.log(chalk.green("Base de données synchronisée."));
 
+		// await app.listen({
+		// 	port: 3000,
+		// 	host: '0.0.0.0'
+		// });
 		await app.listen({
-			port: 3000,
+			port: process.env.PORT || 3000,
 			host: '0.0.0.0'
 		});
 
