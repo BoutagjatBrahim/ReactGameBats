@@ -24,6 +24,10 @@
 		"ws": "^8.18.0"
 	},
 	"scripts": {
-		"dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+	},
+	"engines": {
+		"node": ">=18.0.0"
 	}
 }
