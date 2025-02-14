@@ -88,7 +88,8 @@ export async function registerUser(userDatas, bcryptInstance) {
 	});
 
 	// Generate the verification link
-	const confirmationLink = `http://localhost:3000/verify-email/${verificationToken}`;
+	// const confirmationLink = `http://localhost:3000/verify-email/${verificationToken}`;
+	const confirmationLink = `${process.env.BACKEND_URL}/verify-email/${verificationToken}`;
 
 	// Generate the email HTML
 	const emailHtml = getVerificationEmailTemplate(confirmationLink);
